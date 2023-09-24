@@ -2,6 +2,7 @@ const morgan = require("morgan");
 const { NotFoundError, ErrorHandler } = require("./utils/error-handler");
 const { connectToMongo } = require("./utils/monoose.connection");
 const express = require("express");
+const { AllRoutes } = require("./router/router");
 const app = express();
 
 class Application {
@@ -32,6 +33,7 @@ class Application {
     app.get("/", (req, res) => {
       res.json("s");
     });
+    app.use(AllRoutes);
   }
 
   errorHandler() {
